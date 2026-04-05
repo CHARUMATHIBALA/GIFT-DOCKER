@@ -1,0 +1,10 @@
+docker ps
+
+ docker exec -it giftshop-mongo mongosh -u admin -p password123 --authenticationDatabase admin
+
+
+ use giftshop
+
+ show collections
+
+db.users.find().pretty()
