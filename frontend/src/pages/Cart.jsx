@@ -40,8 +40,8 @@ export default function Cart() {
 
     try {
       await dispatch(createOrder(orderData)).unwrap()
-      alert('Order placed successfully! Payment will be processed in 20 seconds.')
-      navigate('/orders')
+      // Navigate to payment with the total amount
+      navigate('/payment', { state: { amount: getTotalPrice() } })
     } catch (error) {
       alert('Failed to place order: ' + error.message)
     }

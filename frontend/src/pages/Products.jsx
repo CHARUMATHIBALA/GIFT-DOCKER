@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, Link } from "react-router-dom"
 import { fetchProducts } from "../features/productSlice"
 import { addToCart } from "../features/cartSlice"
-import { toggleWishlist } from "../features/wishlistSlice"
 import { logout } from "../features/authSlice"
 
 // Fallback products to ensure at least 10 items are displayed
@@ -111,7 +110,6 @@ export default function Products() {
   const navigate = useNavigate()
   const { items: products, isLoading } = useSelector(state => state.products)
   const { items: cartItems } = useSelector(state => state.cart)
-  const wishlistIds = useSelector(state => state.wishlist.items.map(i => i._id))
   const { user } = useSelector(state => state.auth)
   
   const [search, setSearch] = useState('')
@@ -130,10 +128,6 @@ export default function Products() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
-  }
-
-  const handleToggleWishlist = (product) => {
-    dispatch(toggleWishlist(product))
   }
 
   const handleLogout = () => {
@@ -459,27 +453,6 @@ export default function Products() {
                     alt={product.name}
                     className="product-image"
                   />
-                  <div className="absolute top-4 right-4 flex flex-col gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleToggleWishlist(product)}
-                      className={`p-3 glass rounded-full transition-all border ${
-                        wishlistIds.includes(product._id)
-                          ? "bg-gold-primary/20 border-gold-primary/30 text-gold-primary"
-                          : "border-transparent hover:bg-gold-primary/20 hover:border-gold-primary/30"
-                      }`}
-                      aria-label="Toggle wishlist"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill={wishlistIds.includes(product._id) ? "currentColor" : "none"}
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                  </div>
                 </div>
                 
                 <div className="p-6 text-center">

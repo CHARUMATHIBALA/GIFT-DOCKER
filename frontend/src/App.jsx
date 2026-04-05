@@ -12,7 +12,6 @@ import Contact from "./pages/Contact"
 import Cart from "./pages/Cart"
 import Orders from "./pages/Orders"
 import Profile from "./pages/Profile"
-import Wishlist from "./pages/Wishlist"
 import Payment from "./pages/Payment"
 
 function ProtectedRoute({ children, adminOnly = false }) {
@@ -41,11 +40,6 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/wishlist" element={
-              <ProtectedRoute>
-                <Wishlist />
-              </ProtectedRoute>
-            } />
             <Route 
               path="/dashboard" 
               element={
