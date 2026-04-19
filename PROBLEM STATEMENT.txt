@@ -1,0 +1,16 @@
+Multi-Container Application with Docker Compose
+Scenario
+A web application requires a backend API and a database to function. Managing
+these services individually is complex.
+
+Objective
+Use Docker Compose to manage multiple containers as a single application.
+Requirements
+
+● Create Docker images for application services.
+● Write a docker-compose.yml file.
+● Configure service networking.
+● Ensure services communicate successfully.
+Deliverables
+● Docker Compose configuration file
+● Running multi-container application 

@@ -8,3 +8,15 @@ docker ps
  show collections
 
 db.users.find().pretty()
+
+
+
+# Access MongoDB shell
+docker exec -it giftshop-mongo mongosh -u admin -p password123 --authenticationDatabase admin
+
+# Inside MongoDB shell:
+use giftshop
+show collections
+db.users.find().pretty()
+db.products.find().pretty()
+db.orders.find().pretty()
